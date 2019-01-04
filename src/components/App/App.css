@@ -6,7 +6,8 @@
 }
 
 footer {
-  background: rgba(0, 0, 0, 0.2);
+  background: hsl(310, 35%, 35%);
+  font-family: var(--cursive);
 
   position: absolute;
   bottom: 0;

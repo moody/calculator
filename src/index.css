@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Concert+One|Indie+Flower|Source+Code+Pro');
+
+:root {
+  --cursive: "Indie Flower", cursive;
+  --monospace: "Concert One", monospace;
+}
+
 body {
   background: linear-gradient(hsl(210, 50%, 40%), hsl(220, 50%, 40%));
   color: ivory;

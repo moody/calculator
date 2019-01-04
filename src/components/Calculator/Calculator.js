@@ -1,37 +1,29 @@
 import React, { Component } from 'react';
+import { BUTTON_DATA } from '../../utils';
 import './Calculator.css';
 
 class Calculator extends Component {
   render() {
+    let buttons = [];
+    for (let key in BUTTON_DATA) {
+      let value = BUTTON_DATA[key];
+      // Add grid-area
+      let style = { gridArea: key };
+      // Add background if number
+      if (!isNaN(parseInt(value))) style.background = "rgba(0, 0, 0, 0.9)";
+      // Push button JSX to buttons
+      buttons.push(<button id={key} style={style}>{value}</button>);
+    }
+
     return (
       <div id="Calculator">
-        <div id="display">
+        <div id="header">
+          <div id="history">{this.props.history.join(" ")}</div>
+          <div id="display">{this.props.current}</div>
         </div>
 
         <div id="buttons">
-          <button id="clear">CE</button>
-
-          <button id="seven">7</button>
-          <button id="eight">8</button>
-          <button id="nine">9</button>
-
-          <button id="four">4</button>
-          <button id="five">5</button>
-          <button id="six">6</button>
-
-          <button id="one">1</button>
-          <button id="two">2</button>
-          <button id="three">3</button>
-
-          <button id="zero">0</button>
-          <button id="decimal">.</button>
-
-          <button id="divide">&divide;</button>
-          <button id="multiply">&times;</button>
-          <button id="subtract">&minus;</button>
-          <button id="add">+</button>
-
-          <button id="equals">=</button>
+          {buttons}
         </div>
       </div>
     );

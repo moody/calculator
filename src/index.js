@@ -11,3 +11,8 @@ ReactDOM.render(<App />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+// Add freeCodeCamp test suite
+const fcc = document.createElement("script");
+fcc.setAttribute("src", "https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js");
+document.body.appendChild(fcc);
