@@ -1,0 +1,7 @@
+@import './shared.scss';
+
+body {
+  background: linear-gradient(hsl(210, 50%, 40%), hsl(220, 50%, 40%));
+  color: $white;
+  min-height: 100vh;
+}

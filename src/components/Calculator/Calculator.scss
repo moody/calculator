@@ -1,16 +1,17 @@
-button {
-  background: rgba(0, 0, 0, 0.6);
+@import '../../shared.scss';
+
+hr {
   border: none;
-  color: ivory;
-  font-size: 2em;
-  margin: 1px;
+  border-top: 1px solid $white;
+  opacity: 0.3;
+  width: 100%;
 }
 
 #Calculator {
-  background: thistle;
-  border: 1px solid ivory;
+  background: $blue;
+  border: 1px solid $white;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.35);
-  font-family: var(--monospace);
+  font-family: $monospace;
   padding: 10px;
 }
 
@@ -31,7 +32,7 @@ button {
 }
 
 #history {
-  background: orange;
+  font-size: 1.5em;
   max-width: 380px;
   min-height: 20px;
 }

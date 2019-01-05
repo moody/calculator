@@ -1,0 +1,42 @@
+@import '../../shared.scss';
+
+#App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+footer {
+  background: $blue;
+  font-family: $cursive;
+
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 40px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: 1s color;
+
+    &:hover {
+      color: $green;
+    }
+  }
+}
+
+@media (max-height: 650px) {
+  #App {
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  footer { position: initial; }
+}
