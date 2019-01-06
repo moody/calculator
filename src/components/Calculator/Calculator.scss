@@ -45,6 +45,8 @@ hr {
   display: grid;
   grid-template-columns: repeat(4, auto);
   grid-template-rows: repeat(5, auto);
+  column-gap: 2px;
+  row-gap: 2px;
   grid-template-areas:
   "clear clear clear divide"
   "seven eight nine multiply"
