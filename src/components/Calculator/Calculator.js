@@ -55,25 +55,31 @@ class Calculator extends Component {
         case "multiply":
         case "subtract":
         case "add":
-          if (isDirty && history.length >= 2) {
+          if (current === Utils.ERROR || current === Utils.DIVIDE_BY_ZERO) {
+            // Return if error is displayed
+            return;
+          } else if (isDirty && history.length >= 2) {
+            // Change operation
             history[history.length - 1] = value;
           } else {
+            // Add current number to history
             history.push(Number(current));
+            // If calculate() is successful, add operation to history
+            // Otherwise, reset history
             let result = Utils.calculate(history);
             if (typeof result === "number") {
-              if (history.length >= 2) current = `${result}`;
-              history.push(value)
+              history.push(value);
             } else {
-              current = result;
               history = [];
             }
+            current = `${result}`;
             isDirty = true;
           }
           break;
         case "equals":
           if (history.length >= 2) {
             history.push(Number(current));
-            current = "" + Utils.calculate(history);
+            current = `${Utils.calculate(history)}`;
             history = [];
           }
           isDirty = true;
