@@ -60,18 +60,32 @@ export const evaluate = (a, b, op) => {
     return ERROR;
   }
 
+  let result;
+
   switch (op) {
     case DIVIDE:
-      return (b !== 0) ? (a / b) : DIVIDE_BY_ZERO;
+      result = (b !== 0) ? (a / b) : DIVIDE_BY_ZERO;
+      break;
     case MULTIPLY:
-      return a * b;
+      result = a * b;
+      break;
     case SUBTRACT:
-      return a - b;
+      result = a - b;
+      break;
     case ADD:
-      return a + b;
+      result = a + b;
+      break;
     default:
-      return ERROR;
+      result = ERROR;
+      break;
   }
+  
+  // Avoid round-off errors
+  if (result !== ERROR && result !== DIVIDE_BY_ZERO) {
+    result = Number(Number(result).toPrecision(12));
+  }
+
+  return result;
 }
 
 /**
