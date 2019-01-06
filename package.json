@@ -6,7 +6,9 @@
     "node-sass": "^4.11.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-scripts": "2.1.2"
+    "react-scripts": "2.1.2",
+    "typeface-concert-one": "^0.0.54",
+    "typeface-indie-flower": "^0.0.54"
   },
   "scripts": {
     "start": "react-scripts start",

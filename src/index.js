@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'typeface-concert-one';
+import 'typeface-indie-flower';
 import 'normalize.css';
 import './index.scss';
 import App from './components/App/App';
