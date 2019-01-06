@@ -29,6 +29,26 @@ export const BUTTON_DATA = {
   clear: "C"
 }
 
+export const BUTTON_KEYS = {
+  "1": "one",
+  "2": "two",
+  "3": "three",
+  "4": "four",
+  "5": "five",
+  "6": "six",
+  "7": "seven",
+  "8": "eight",
+  "9": "nine",
+  "0": "zero",
+  ".": "decimal",
+  "/": "divide",
+  "*": "multiply",
+  "-": "subtract",
+  "+": "add",
+  "Enter": "equals",
+  " ": "clear"
+}
+
 /**
  * Returns the number obtained by performing an operation on a and b.
  * @param {number} a
@@ -54,6 +74,10 @@ export const evaluate = (a, b, op) => {
   }
 }
 
+/**
+ * Evaluates an array of alternating numbers and operators and returns the final result.
+ * @param {[]} arr (e.g. [1, "+", 2])
+ */
 export const calculate = (arr) => {
   if (arr.length === 1) {
     return (typeof arr[0] === "number") ? arr[0] : ERROR;

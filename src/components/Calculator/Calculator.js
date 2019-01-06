@@ -16,12 +16,17 @@ class Calculator extends Component {
     this.handleButton = this.handleButton.bind(this);
   }
 
+  componentWillMount() {
+    document.addEventListener("keypress", event => {
+      this.handleButton(Utils.BUTTON_KEYS[event.key]);
+    });
+  }
+
   /**
    * Updates the state of the calculator based on the button that was pressed.
    * @param {string} id the button's id
    */
   handleButton(id) {
-    console.log(`handleButton: ${id}`);
     if (!Utils.BUTTON_DATA.hasOwnProperty(id)) return;
     let value = Utils.BUTTON_DATA[id];
 
