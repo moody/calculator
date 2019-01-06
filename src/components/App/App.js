@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BUTTON_DATA } from '../../utils';
+import { BUTTON_DATA, OPERATORS } from '../../utils';
 import Calculator from '../Calculator/Calculator';
 import './App.scss';
 
@@ -8,9 +8,13 @@ class App extends Component {
     super(props);
 
     this.state = {
-      current: 0,
-      history: [5, "-", 6, "+", 1, "+"]
+      current: "0",
+      last: -1,
+      dirty: true,
+      history: [5, "-", 6, "+"]
     }
+
+    this.handleButton = this.handleButton.bind(this);
   }
 
   /**
@@ -18,32 +22,72 @@ class App extends Component {
    * @param {string} id the button's id
    */
   handleButton(id) {
-    if (!BUTTON_DATA.hasOwnProperty(id)) return;
     console.log(`handleButton: ${id}`);
-    switch(id) {
-      case "one":
-      case "two":
-      case "three":
-      case "four":
-      case "five":
-      case "six":
-      case "seven":
-      case "eight":
-      case "nine":
-      case "zero":
-      case "decimal":
-      case "divide":
-      case "multiply":
-      case "subtract":
-      case "add":
-      case "equals":
-      case "clear":
-      default:
-        break;
+    if (!BUTTON_DATA.hasOwnProperty(id)) return;
+    let value = BUTTON_DATA[id];
+    
+    if (!isNaN(parseInt(value))) {
+      this.setState({
+        current: this.state.dirty ? value : this.state.current + value,
+        dirty: false
+      });
+    } else {
+      let current = this.state.current;
+      let last = this.state.last;
+      let dirty = this.state.dirty;
+      let history = this.state.history;
+
+      switch(id) {
+        case "clear":
+          current = "0";
+          last = 0;
+          dirty = true;
+          history = [];
+          break;
+        case "decimal":
+          if (!current.match(/\./g)) current = current + ".";
+          break;
+        case "divide":
+        case "multiply":
+        case "subtract":
+        case "add":
+          let hasHistory = (history.length > 0);
+          let newVal =  hasHistory ?
+            this.evaluate(last, Number(current), history[history.length - 1]) :
+            Number(current);
+          history = [...history, current, value];
+          current = "" + newVal;
+          last = newVal;
+          dirty = true;
+          break;
+        case "equals":
+          if (history.length === 0) break;
+          current = this.evaluate(last, Number(current), history[history.length - 1]);
+          last = 0;
+          dirty = true;
+          history = [];
+          break;
+        default:
+          break;
+      }
+
+      this.setState({ current, last, dirty, history });
     }
   }
 
-  evaluate() {
+  evaluate(a, b, op) {
+    switch(op) {
+      case OPERATORS.DIVIDE:
+        return a / b;
+      case OPERATORS.MULTIPLY:
+        return a * b;
+      case OPERATORS.SUBTRACT:
+        return a - b;
+      case OPERATORS.ADD:
+        return a + b;
+      default:
+        return "Error";
+    }
   }
 
   render() {

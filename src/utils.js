@@ -1,3 +1,9 @@
+const DIVIDE = "\xF7";
+const MULTIPLY = "\xD7";
+const SUBTRACT = "-";
+const ADD = "+";
+const EQUALS = "=";
+
 export const BUTTON_DATA = {
   one: "1",
   two: "2",
@@ -11,11 +17,19 @@ export const BUTTON_DATA = {
   zero: "0",
   decimal: ".",
   
-  divide: "\xF7",
-  multiply: "\xD7",
-  subtract: "-",
-  add: "+",
-  equals: "=",
+  divide: DIVIDE,
+  multiply: MULTIPLY,
+  subtract: SUBTRACT,
+  add: ADD,
+  equals: EQUALS,
 
   clear: "C"
+}
+
+export const OPERATORS = {
+  DIVIDE,
+  MULTIPLY,
+  SUBTRACT,
+  ADD,
+  EQUALS
 }
