@@ -43,8 +43,8 @@ hr {
 
 #buttons {
   display: grid;
-  grid-template-columns: repeat(4, 100px);
-  grid-template-rows: repeat(5, 75px);
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(5, auto);
   grid-template-areas:
   "clear clear clear divide"
   "seven eight nine multiply"
