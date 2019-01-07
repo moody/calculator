@@ -11,6 +11,11 @@ class Button extends Component {
     this.props.handleButton(event.target.id);
   }
 
+  onMouseDown(event) {
+    // prevent focus since it causes issues with keybinds
+    event.preventDefault();
+  }
+
   render() {
     let id = this.props.id;
     let value = this.props.value;
@@ -20,7 +25,13 @@ class Button extends Component {
     if (!isNaN(parseInt(value))) style.background = "rgba(0, 0, 0, 0.9)";
     
     return (
-      <button id={id} style={style} onClick={this.onClick}>{value}</button>
+      <button
+        id={id}
+        style={style}
+        onClick={this.onClick}
+        onMouseDown={this.onMouseDown}>
+        {value}
+      </button>
     );
   }
 }
